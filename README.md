@@ -7,6 +7,9 @@ Step by step:
 3. source kivy_env/bin/activate
 4. python3 -m pip install kivy[full] kivy_examples
 
+http://kivmob.com/tutorials.html for adMob
+5. python install kivmob
+
 examples: run python kivy_env/share/kivy-examples/demo/showcase/main.py
 
 branch:

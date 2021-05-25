@@ -1,6 +1,8 @@
 import kivy 
 kivy.require('2.0.0')
 
+from kivmob import KivMob, TestIds
+
 from kivy.app import App 
 from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
@@ -18,9 +20,16 @@ class LoginScreen(GridLayout):
         # self.password = TextInput(password=True, multiline=False)
         # self.add_widget(self.password)
 
+
 class LoginApp(App):
     def build(self):
+        # self.ads = KivMob(TestIds.APP)
+        # self.ads.new_banner(TestIds.BANNER, top_pos=True)
+        # self.ads.request_banner()
+        # self.ads.show_banner()
+
         return LoginScreen()
+        # return Label(text='Banner Ad Demo')
 
 if __name__ == '__main__':
     LoginApp().run()
