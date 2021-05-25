@@ -8,6 +8,12 @@ from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label 
 from kivy.uix.textinput import TextInput 
+from kivy.clock import Clock
+
+def callme(dt):
+    print("call me after 5 s")
+    Clock.schedule_once(callme,5)
+
 
 class LoginScreen(GridLayout):
     def __init__(self,**kwargs):
@@ -23,11 +29,11 @@ class LoginScreen(GridLayout):
 
 class LoginApp(App):
     def build(self):
-        # self.ads = KivMob(TestIds.APP)
-        # self.ads.new_banner(TestIds.BANNER, top_pos=True)
-        # self.ads.request_banner()
-        # self.ads.show_banner()
-
+        self.ads = KivMob(TestIds.APP)
+        self.ads.new_banner(TestIds.BANNER, top_pos=True)
+        self.ads.request_banner()
+        self.ads.hide_banner()
+        Clock.schedule_once(callme,5)
         return LoginScreen()
         # return Label(text='Banner Ad Demo')
 
