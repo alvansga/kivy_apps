@@ -15,5 +15,6 @@ examples: run python kivy_env/share/kivy-examples/demo/showcase/main.py
 branch:
 pong_game -> tutorial from https://kivy.org/doc/stable/tutorials/pong.html
 login_screen -> simple username/password with test kivmob
+custom_button -> make custom button (example from kivy.pdf) 
 
 
