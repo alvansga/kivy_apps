@@ -4,6 +4,25 @@ from kivy.graphics import Rectangle
 from kivy.core.window import Window
 from kivy.clock import Clock
 
+#collide detection
+def collides(rect1,rect2):
+	r1x = rect1[0][0]
+	r1y = rect1[0][1]
+	
+	r2x = rect2[0][0]
+	r2y = rect2[0][1]
+	
+	r1w = rect1[1][0]
+	r1h = rect1[1][1]
+	
+	r2w = rect2[1][0]
+	r2h = rect2[1][0]
+	
+	if (r1x < r2x + r2w and r1x + r1w > r2x and r1y< r2y + r2h and r1y + r1h > r2y):
+		return True #collide
+	else:
+		return False #not collide
+
 class GameWidget(Widget):
 	def __init__(self,**kwargs):
 		super().__init__(**kwargs)
@@ -14,6 +33,7 @@ class GameWidget(Widget):
 		
 		with self.canvas:
 			self.player = Rectangle(source="player2.png",pos=(0,0),size=(100,100))
+			self.enemy = Rectangle(pos=(400,400),size=(80,80))
 			
 		self.keysPressed = set()
 		
@@ -53,6 +73,11 @@ class GameWidget(Widget):
 		new_x = cur_x
 		new_y = cur_y
 		self.player.pos = (new_x,new_y)
+		
+		if collides((self.player.pos, self.player.size),(self.enemy.pos, self.enemy.size)):
+			print("colliding")
+		else:
+			pass #print("not colliding")
 		
 		
 class MyApp(App):
