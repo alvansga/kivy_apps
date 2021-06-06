@@ -11,14 +11,31 @@ class GameWidget(Widget):
 		self._keyboard.bind(on_key_down = self._on_key_down)
 		
 		with self.canvas:
-			Rectangle(source="player2.png",pos=(0,0),size=(100,100))
+			self.player = Rectangle(source="player2.png",pos=(0,0),size=(100,100))
 			
 	def _on_keyboard_closed(self):
 		self._keyboard.unbind(on_key_down = self._on_key_down)
 		self._keyboard = None
 		
 	def _on_key_down(self, keyboard, keycode, text, modifiers):
-		print("key down detect")
+		print("key down:",text)
+		
+		cur_x = self.player.pos[0]
+		cur_y = self.player.pos[1]
+		
+		if text == "w":
+			cur_y += 5
+		if text == "s":
+			cur_y -= 5
+			
+		if text == "a":
+			cur_x -= 5
+		if text == "d":
+			cur_x += 5
+			
+		new_x = cur_x
+		new_y = cur_y
+		self.player.pos = (new_x,new_y)
 		
 class MyApp(App):
 	def build(self):
