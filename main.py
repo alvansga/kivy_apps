@@ -3,6 +3,7 @@ from kivy.uix.widget import Widget
 from kivy.graphics import Rectangle
 from kivy.core.window import Window
 from kivy.clock import Clock
+from kivy.core.audio import SoundLoader
 
 #collide detection
 def collides(rect1,rect2):
@@ -38,6 +39,9 @@ class GameWidget(Widget):
 		self.keysPressed = set()
 		
 		Clock.schedule_interval(self.move_step,0)
+		
+		self.sound = SoundLoader.load("music.mp3")
+		self.sound.play()
 		
 	def _on_keyboard_closed(self):
 		self._keyboard.unbind(on_key_down = self._on_key_down)
